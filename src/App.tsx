@@ -1,4 +1,5 @@
 import { useEffect, useState, type PointerEvent as ReactPointerEvent } from 'react';
+import StartJourney from '@/components/StartJourney';
 import TrainingEnvironment from '@/components/TrainingEnvironment';
 import {
   ArrowDown,
@@ -355,6 +356,7 @@ function App() {
       </section>
 
       <TrainingEnvironment />
+      <StartJourney />
     </main>
   );
 }

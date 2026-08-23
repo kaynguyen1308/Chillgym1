@@ -131,6 +131,37 @@ h1 em { color: #8a9b55; font-style: normal; }
 .environment-gallery-item:hover img { transform: scale(1.035); filter: brightness(1.06); }
 @keyframes environment-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
+.journey-section { padding: clamp(110px, 16vw, 220px) clamp(24px, 6vw, 80px) clamp(90px, 12vw, 170px); background: #0b0c0a; }
+.journey-intro { max-width: 980px; margin: 0 auto clamp(46px, 7vw, 92px); text-align: center; }
+.journey-intro h2 { margin: 0; color: #f2f1ec; font-size: clamp(42px, 6vw, 82px); font-weight: 800; line-height: .98; letter-spacing: -.065em; }
+.journey-opening-image { width: min(100%, 1280px); margin: 0 auto; aspect-ratio: 16 / 9; overflow: hidden; background: #151714; }
+.journey-opening-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+.member-offer { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 40px; width: min(100%, 1080px); margin: clamp(76px, 11vw, 140px) auto 0; padding-bottom: clamp(54px, 8vw, 88px); border-bottom: 1px solid rgba(242, 241, 236, .18); }
+.journey-block-heading { flex: 1 1 250px; }
+.journey-block-heading h3, .journey-subheading h3 { margin: 0; color: #f2f1ec; font-size: clamp(26px, 3.4vw, 48px); font-weight: 800; line-height: 1; letter-spacing: -.05em; }
+.membership-options { display: grid; grid-template-columns: repeat(3, minmax(120px, 1fr)); flex: 1 1 470px; }
+.membership-option { display: flex; flex-direction: column; gap: 12px; min-height: 80px; padding: 0 24px; border-left: 1px solid rgba(242, 241, 236, .22); }
+.membership-option:first-child { padding-left: 0; border-left: 0; }
+.membership-option span, .offer-label, .offer-price span { color: #8a9b55; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.membership-option strong { color: #f2f1ec; font-size: clamp(25px, 3vw, 40px); font-weight: 800; line-height: 1; letter-spacing: -.06em; }
+.journey-cta { margin-left: auto; }
+.personal-training { width: min(100%, 1080px); margin: clamp(100px, 15vw, 190px) auto 0; }
+.journey-subheading { margin-bottom: clamp(42px, 7vw, 80px); text-align: center; }
+.training-offer { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: min(54vw, 700px); }
+.training-offer + .training-offer { margin-top: clamp(70px, 10vw, 130px); }
+.training-offer-image { min-height: 480px; margin: 0; overflow: hidden; background: #151714; }
+.training-offer-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .8s cubic-bezier(.22, .61, .36, 1); }
+.training-offer:hover .training-offer-image img { transform: scale(1.025); }
+.training-offer-content { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(36px, 7vw, 92px); border-top: 1px solid rgba(242, 241, 236, .18); border-bottom: 1px solid rgba(242, 241, 236, .18); }
+.training-offer-content h3 { margin: 12px 0 clamp(36px, 5vw, 62px); color: #f2f1ec; font-size: clamp(34px, 5vw, 68px); font-weight: 800; line-height: .95; letter-spacing: -.065em; }
+.offer-price { display: flex; flex-direction: column; gap: 14px; margin-bottom: 38px; }
+.offer-price strong { color: #f2f1ec; font-size: clamp(34px, 4vw, 58px); font-weight: 800; line-height: .95; letter-spacing: -.06em; }
+.training-offer-male .training-offer-content { border-right: 0; }
+.journey-closing { max-width: 860px; margin: clamp(120px, 18vw, 240px) auto 0; text-align: center; }
+.journey-closing h3 { margin: 0 0 42px; color: #f2f1ec; font-size: clamp(30px, 5vw, 64px); font-weight: 800; line-height: .98; letter-spacing: -.06em; }
+.journey-closing h3 em { color: #8a9b55; font-style: normal; }
+.journey-closing .button { min-width: 180px; }
+
 @media (max-width: 1080px) {
   .site-header { padding: 26px 28px; gap: 20px; }
   .main-nav { gap: 18px; }
@@ -188,6 +219,30 @@ h1 em { color: #8a9b55; font-style: normal; }
   .environment-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .environment-gallery-item { aspect-ratio: 3 / 4; }
   .environment-gallery-item:hover img { transform: none; filter: none; }
+  .journey-section { padding: 96px 22px 86px; }
+  .journey-intro { margin-bottom: 44px; text-align: left; }
+  .journey-intro h2 { font-size: clamp(40px, 11vw, 62px); }
+  .journey-opening-image { aspect-ratio: 4 / 3; }
+  .journey-opening-image img { object-position: 56% center; }
+  .member-offer { display: block; margin-top: 72px; padding-bottom: 56px; }
+  .journey-block-heading h3 { font-size: clamp(28px, 8vw, 42px); }
+  .membership-options { grid-template-columns: 1fr; margin-top: 38px; }
+  .membership-option, .membership-option:first-child { min-height: auto; padding: 18px 0; border-top: 1px solid rgba(242, 241, 236, .18); border-left: 0; }
+  .membership-option:last-child { border-bottom: 1px solid rgba(242, 241, 236, .18); }
+  .membership-option strong { font-size: 34px; }
+  .journey-cta { margin-top: 30px; }
+  .personal-training { margin-top: 90px; }
+  .journey-subheading { margin-bottom: 44px; text-align: left; }
+  .journey-subheading h3 { font-size: clamp(30px, 8vw, 44px); }
+  .training-offer { display: flex; flex-direction: column; min-height: 0; }
+  .training-offer-image { min-height: 0; aspect-ratio: 4 / 3; }
+  .training-offer-content { padding: 42px 0 0; border-top: 0; border-bottom: 0; }
+  .training-offer-content h3 { margin: 12px 0 34px; font-size: clamp(38px, 11vw, 58px); }
+  .offer-price { margin-bottom: 30px; }
+  .training-offer-male .training-offer-content { order: -1; padding-bottom: 42px; }
+  .training-offer + .training-offer { margin-top: 82px; }
+  .journey-closing { margin-top: 118px; text-align: left; }
+  .journey-closing h3 { margin-bottom: 34px; font-size: clamp(32px, 9.5vw, 52px); }
 }
 
 @media (max-width: 390px) {
