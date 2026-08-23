@@ -96,7 +96,7 @@ function StartJourney() {
 
       <div className="journey-closing">
         <h3>
-          KHÔNG CHỈ LÀ MỘT PHÒNG GYM.
+          THAY ĐỔI CƠ THỂ.
           <br />
           <em>ĐÓ LÀ NƠI BẠN BẮT ĐẦU</em>
           <br />
