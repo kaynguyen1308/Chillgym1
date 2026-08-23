@@ -12,7 +12,7 @@ import {
   X,
 } from 'lucide-react';
 
-const navItems = ['GIỚI THIỆU', 'BIẾN ĐỔI', 'DỊCH VỤ', 'HUẤN LUYỆN VIÊN', 'ĐÁNH GIÁ', 'ĐỊA CHỈ'];
+const navItems = ['GIỚI THIỆU', 'THAY ĐỔI', 'DỊCH VỤ', 'HUẤN LUYỆN VIÊN', 'ĐÁNH GIÁ', 'ĐỊA CHỈ'];
 
 const features = [
   { label: ['KHÔNG GIAN', 'THOÁNG MÁT'], icon: Leaf },
@@ -36,6 +36,18 @@ const aboutImages = [
   'https://res.cloudinary.com/iq7pkdiu/image/upload/v1787480765/FACILITY_2.jpg',
 ];
 
+const femaleImages = [
+  'https://res.cloudinary.com/iq7pkdiu/image/upload/ketqua_7.jpg',
+  'https://res.cloudinary.com/iq7pkdiu/image/upload/ketqua_8.jpg',
+  'https://res.cloudinary.com/iq7pkdiu/image/upload/ketqua_9.jpg',
+];
+
+const maleImages = [
+  'https://res.cloudinary.com/iq7pkdiu/image/upload/ketqua_3.jpg',
+  'https://res.cloudinary.com/iq7pkdiu/image/upload/ketqua_1.jpg',
+  'https://res.cloudinary.com/iq7pkdiu/image/upload/ketqua_2.jpg',
+];
+
 const HERO_SLIDE_INTERVAL = 5000;
 
 function getSlidesToShow(): number {
@@ -45,13 +57,39 @@ function getSlidesToShow(): number {
   return 3;
 }
 
+function useDragCarousel(maxSlide: number) {
+  const [slide, setSlide] = useState(0);
+  const [dragStart, setDragStart] = useState<number | null>(null);
+
+  const next = () => setSlide((prev) => Math.min(prev + 1, maxSlide));
+  const previous = () => setSlide((prev) => Math.max(prev - 1, 0));
+
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    setDragStart(event.clientX);
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (dragStart === null) return;
+    const distance = event.clientX - dragStart;
+    if (Math.abs(distance) > 45) {
+      if (distance < 0) next();
+      else previous();
+    }
+    setDragStart(null);
+  };
+
+  return { slide, setSlide, next, previous, handlePointerDown, handlePointerUp, setDragStart };
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
   const [aboutSlide, setAboutSlide] = useState(0);
   const [aboutSlidesToShow, setAboutSlidesToShow] = useState(getSlidesToShow);
-  const [dragStart, setDragStart] = useState<number | null>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const femaleCarousel = useDragCarousel(femaleImages.length - 1);
+  const maleCarousel = useDragCarousel(maleImages.length - 1);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -77,20 +115,22 @@ function App() {
   const goToNextAboutSlide = () => setAboutSlide((prev) => Math.min(prev + 1, maxAboutSlide));
   const goToPreviousAboutSlide = () => setAboutSlide((prev) => Math.max(prev - 1, 0));
 
-  const handleCarouselPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    setDragStart(event.clientX);
+  const handleAboutPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    setAboutDragStart(event.clientX);
     event.currentTarget.setPointerCapture(event.pointerId);
   };
 
-  const handleCarouselPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (dragStart === null) return;
-    const distance = event.clientX - dragStart;
+  const handleAboutPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (aboutDragStart === null) return;
+    const distance = event.clientX - aboutDragStart;
     if (Math.abs(distance) > 45) {
       if (distance < 0) goToNextAboutSlide();
       else goToPreviousAboutSlide();
     }
-    setDragStart(null);
+    setAboutDragStart(null);
   };
+
+  const [aboutDragStart, setAboutDragStart] = useState<number | null>(null);
 
   return (
     <main className="site-page">
@@ -217,11 +257,10 @@ function App() {
 
         <div
           className="about-carousel"
-          ref={carouselRef}
-          onPointerDown={handleCarouselPointerDown}
-          onPointerUp={handleCarouselPointerUp}
-          onPointerCancel={() => setDragStart(null)}
-          onPointerLeave={() => setDragStart(null)}
+          onPointerDown={handleAboutPointerDown}
+          onPointerUp={handleAboutPointerUp}
+          onPointerCancel={() => setAboutDragStart(null)}
+          onPointerLeave={() => setAboutDragStart(null)}
         >
           <div
             className="about-track"
@@ -243,9 +282,75 @@ function App() {
             <button type="button" onClick={goToNextAboutSlide} disabled={aboutSlide === maxAboutSlide} aria-label="Ảnh tiếp theo">
               <ArrowRight size={19} strokeWidth={1.4} />
             </button>
-            <span className="about-count">0{aboutSlide + 1} <i>/</i> 0{maxAboutSlide + 1}</span>
           </div>
         </div>
+      </section>
+
+      <section className="transform-section" id="thay-đổi" aria-labelledby="transform-heading">
+        <div className="transform-intro">
+          <p className="section-kicker">KẾT QUẢ THỰC</p>
+          <h2 id="transform-heading">HÀNH TRÌNH <em>THAY ĐỔI</em></h2>
+        </div>
+
+        <article className="transform-case">
+          <div className="case-label">
+            <span className="case-number">CASE 01</span>
+            <span className="case-gender">NỮ</span>
+          </div>
+          <div
+            className="transform-carousel"
+            onPointerDown={femaleCarousel.handlePointerDown}
+            onPointerUp={femaleCarousel.handlePointerUp}
+            onPointerCancel={() => femaleCarousel.setDragStart(null)}
+            onPointerLeave={() => femaleCarousel.setDragStart(null)}
+          >
+            <div className="transform-track" style={{ transform: `translateX(-${femaleCarousel.slide * 100}%)` }}>
+              {femaleImages.map((src, index) => (
+                <figure className="transform-image" key={src}>
+                  <img src={src} alt={`Hành trình thay đổi nữ ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} draggable="false" />
+                </figure>
+              ))}
+            </div>
+          </div>
+          <div className="transform-arrows">
+            <button type="button" onClick={femaleCarousel.previous} disabled={femaleCarousel.slide === 0} aria-label="Ảnh trước">
+              <ArrowLeft size={20} strokeWidth={1.4} />
+            </button>
+            <button type="button" onClick={femaleCarousel.next} disabled={femaleCarousel.slide === femaleImages.length - 1} aria-label="Ảnh tiếp theo">
+              <ArrowRight size={20} strokeWidth={1.4} />
+            </button>
+          </div>
+        </article>
+
+        <article className="transform-case">
+          <div className="case-label">
+            <span className="case-number">CASE 02</span>
+            <span className="case-gender">NAM</span>
+          </div>
+          <div
+            className="transform-carousel"
+            onPointerDown={maleCarousel.handlePointerDown}
+            onPointerUp={maleCarousel.handlePointerUp}
+            onPointerCancel={() => maleCarousel.setDragStart(null)}
+            onPointerLeave={() => maleCarousel.setDragStart(null)}
+          >
+            <div className="transform-track" style={{ transform: `translateX(-${maleCarousel.slide * 100}%)` }}>
+              {maleImages.map((src, index) => (
+                <figure className="transform-image" key={src}>
+                  <img src={src} alt={`Hành trình thay đổi nam ${index + 1}`} loading="lazy" draggable="false" />
+                </figure>
+              ))}
+            </div>
+          </div>
+          <div className="transform-arrows">
+            <button type="button" onClick={maleCarousel.previous} disabled={maleCarousel.slide === 0} aria-label="Ảnh trước">
+              <ArrowLeft size={20} strokeWidth={1.4} />
+            </button>
+            <button type="button" onClick={maleCarousel.next} disabled={maleCarousel.slide === maleImages.length - 1} aria-label="Ảnh tiếp theo">
+              <ArrowRight size={20} strokeWidth={1.4} />
+            </button>
+          </div>
+        </article>
       </section>
     </main>
   );
