@@ -1,4 +1,5 @@
 import { useEffect, useState, type PointerEvent as ReactPointerEvent } from 'react';
+import Coaches from '@/components/Coaches';
 import StartJourney from '@/components/StartJourney';
 import TrainingEnvironment from '@/components/TrainingEnvironment';
 import {
@@ -357,6 +358,7 @@ function App() {
 
       <TrainingEnvironment />
       <StartJourney />
+      <Coaches />
     </main>
   );
 }
