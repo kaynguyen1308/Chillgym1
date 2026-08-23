@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
+import { useEffect, useState, type PointerEvent as ReactPointerEvent } from 'react';
+import TrainingEnvironment from '@/components/TrainingEnvironment';
 import {
   ArrowDown,
   ArrowLeft,
@@ -352,6 +353,8 @@ function App() {
           </div>
         </article>
       </section>
+
+      <TrainingEnvironment />
     </main>
   );
 }
