@@ -1,6 +1,7 @@
 import { useEffect, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import Coaches from '@/components/Coaches';
 import StartJourney from '@/components/StartJourney';
+import Testimonials from '@/components/Testimonials';
 import TrainingEnvironment from '@/components/TrainingEnvironment';
 import {
   ArrowDown,
@@ -359,6 +360,7 @@ function App() {
       <TrainingEnvironment />
       <StartJourney />
       <Coaches />
+      <Testimonials />
     </main>
   );
 }
