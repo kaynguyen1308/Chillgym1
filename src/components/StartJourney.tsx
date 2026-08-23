@@ -98,7 +98,7 @@ function StartJourney() {
         <h3>
           THAY ĐỔI CƠ THỂ.
           <br />
-          <em>ĐÓ LÀ NƠI BẠN BẮT ĐẦU</em>
+          <em>THAY ĐỔI CẢ CUỘC ĐỜI.</em>
           <br />
           <em>HÀNH TRÌNH CỦA MÌNH.</em>
         </h3>
