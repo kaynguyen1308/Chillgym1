@@ -100,7 +100,7 @@ function StartJourney() {
           <br />
           <em>THAY ĐỔI CẢ CUỘC ĐỜI.</em>
           <br />
-          <em>HÀNH TRÌNH CỦA MÌNH.</em>
+          <em>BẮT ĐẦU NGAY.</em>
         </h3>
         <a className="button button-primary" href="#tu-van">TƯ VẤN MIỄN PHÍ</a>
       </div>
